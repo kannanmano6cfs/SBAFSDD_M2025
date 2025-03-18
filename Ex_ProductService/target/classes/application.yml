@@ -1,0 +1,6 @@
+resilience4j:
+  retry:
+    instances:
+      fss1:
+        max-attempts: 4
+        wait-duration: 20s
