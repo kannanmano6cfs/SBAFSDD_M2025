@@ -1,6 +1,36 @@
+#Configuration options for @Retry
+#resilience4j:
+#  retry:
+#    instances:
+#      fss1:
+#        max-attempts: 15
+#        wait-duration: 30s
+
+#Configuraion options for @CircuitBreaker
 resilience4j:
-  retry:
+  circuitbreaker:
     instances:
-      fss1:
-        max-attempts: 15
-        wait-duration: 30s
+      fss2:
+        sliding-window-type: count_based
+        sliding-window-size: 10
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        register-health-indicator: true
+
+#Collecting metrics for circuitBreaker
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always

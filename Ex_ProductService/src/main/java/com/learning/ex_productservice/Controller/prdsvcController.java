@@ -3,6 +3,7 @@ package com.learning.ex_productservice.Controller;
 import com.learning.ex_productservice.Exception.ProductNotFoundException;
 import com.learning.ex_productservice.Model.Product;
 import com.learning.ex_productservice.Repository.prdsvcRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -113,11 +114,13 @@ public class prdsvcController {
     public ResponseEntity<Page<Product>> getproducts(Pageable pageable){
         return ResponseEntity.ok(repo.findAll(pageable));
     }
-    int attempt=0;
+    //int attempt=0;
     @GetMapping("/chooseproduct/{id}")
-    @Retry(name="fss1", fallbackMethod = "fallback")
+    //@Retry(name="fss1", fallbackMethod = "fallback")
+    @CircuitBreaker(name="fss2", fallbackMethod = "fallback")
     public ResponseEntity<String> chooseproduct(@PathVariable int id){
-        System.out.println("Product chosen for attempt to shopping: "+attempt++);
+       // System.out.println("Product chosen for attempt to shopping: "+attempt++);
+        System.out.println("Product service request sent to Shopping service");
         Optional<Product> product=repo.findById(id);
         ResponseEntity<String> response= restTemplate.postForEntity(shopsvc_API, product, String.class);
         System.out.println("Product request for shopping sent successfully");
@@ -125,7 +128,7 @@ public class prdsvcController {
     }
 
     public ResponseEntity<String> fallback(Throwable ex){
-        attempt=0;
+        //attempt=0;
         System.out.println("Shopping Service unavailable");
         return new ResponseEntity<>("Shopping cart currently unavailable!!", HttpStatus.INTERNAL_SERVER_ERROR);
     }
