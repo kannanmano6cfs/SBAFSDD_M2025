@@ -1,4 +1,4 @@
-Day 1 HoP
+-----Day 1 HoP-----
 MVC Pattern Structure
 Database in MS SQL Server
 REST API
@@ -9,7 +9,7 @@ Service to Service Communication
 Spring Cloud
 Retry
 ----
-Day 2 HoP
+------Day 2 HoP-----
 CircuitBreaker
 ServiceDiscovery
 API Gateway Implementation
@@ -18,3 +18,4 @@ Distributed Tracing
 
 Relational Databases (Traning Management System)
 Database, Tables, relationships, constraints, cascade, views, triggers and ER Diagram
+----
