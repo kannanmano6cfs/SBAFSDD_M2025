@@ -2,6 +2,9 @@
 MVC Pattern Structure
 Database in MS SQL Server
 REST API
+----
+------Day 2 HoP-----
+Deep dive in REST API
 Exception Handling
 Spring Security 
 Service to Service Communication
@@ -9,7 +12,7 @@ Service to Service Communication
 Spring Cloud
 Retry
 ----
-------Day 2 HoP-----
+------Day 3 HoP-----
 CircuitBreaker
 ServiceDiscovery
 API Gateway Implementation
