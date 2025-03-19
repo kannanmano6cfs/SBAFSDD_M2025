@@ -1,3 +1,4 @@
+Day 1 HoP
 MVC Pattern Structure
 Database in MS SQL Server
 REST API
@@ -7,3 +8,11 @@ Service to Service Communication
 
 Spring Cloud
 Retry
+----
+Day 2 HoP
+CircuitBreaker
+ServiceDiscovery
+API Gateway Implementation
+Load Balancing
+Distributed Tracing
+
