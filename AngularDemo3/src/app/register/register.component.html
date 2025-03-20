@@ -1,0 +1,34 @@
+<h1>Registration Form</h1>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div class="form-group">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" ngModel name="firstname" placeholder="Enter First Name" class="form-control" required minlength="3" />
+    </div>
+
+    <div class="form-group">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" ngModel name="lastname" placeholder="Enter Lasst Name" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="eMail" class="form-label">Email address</label>
+        <input type="text" ngModel name="eMail" placeholder="Enter EMail address" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="course" class="form-label">Select a Course</label>
+        <Select ngModel name="course" class="form-control" required >
+        <option value="opt1">VMware Courses</option>
+        <option value="opt2">Azure Courses</option>
+        <option value="opt3">AWS Courses</option>
+        </Select>
+    </div>
+
+    <div>
+        <button [disabled]="myForm.invalid" class="btn btn-primary" type="submit">Register Here</button>
+    </div>
+</form>
+
+<div>
+    <p>Registration Form data: {{myForm.value | json}}</p>
+</div>
