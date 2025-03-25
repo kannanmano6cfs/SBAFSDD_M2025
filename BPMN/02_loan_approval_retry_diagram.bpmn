@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_135x54x" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Process_0dxfvsm" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_15x43w3" name="Approved" sourceRef="Gateway_1txmrrp" targetRef="Event_03m6yco">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=approved</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_03m6yco">
+      <bpmn:incoming>Flow_15x43w3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_09fabb6">
+      <bpmn:incoming>Flow_0ovce2l</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_04fmxp6" sourceRef="Activity_1oo7tea" targetRef="Gateway_1txmrrp" />
+    <bpmn:sequenceFlow id="Flow_198vycr" sourceRef="Activity_1rekbvt" targetRef="Activity_1oo7tea" />
+    <bpmn:sequenceFlow id="Flow_1e466q2" sourceRef="StartEvent_1" targetRef="Activity_1rekbvt" />
+    <bpmn:exclusiveGateway id="Gateway_1txmrrp">
+      <bpmn:incoming>Flow_04fmxp6</bpmn:incoming>
+      <bpmn:outgoing>Flow_15x43w3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ovce2l</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ild109</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ovce2l" name="Not Approved" sourceRef="Gateway_1txmrrp" targetRef="Event_09fabb6">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=not(approved) and retryAtt&gt;3</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:startEvent id="StartEvent_1" name="Received Loan Application">
+      <bpmn:outgoing>Flow_1e466q2</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1ild109" name="Resubmit the docs&#10;" sourceRef="Gateway_1txmrrp" targetRef="Activity_1rekbvt">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=retryAtt&lt;=3 and not(approved)</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Activity_1oo7tea" name="Review and Approve Docs Submitted">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="myForm2" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_198vycr</bpmn:incoming>
+      <bpmn:outgoing>Flow_04fmxp6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:scriptTask id="Activity_1rekbvt" name="Submit / Resubmit the req docs&#10;">
+      <bpmn:extensionElements>
+        <zeebe:script expression="=retryAtt+1" resultVariable="retryAtt" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1e466q2</bpmn:incoming>
+      <bpmn:incoming>Flow_1ild109</bpmn:incoming>
+      <bpmn:outgoing>Flow_198vycr</bpmn:outgoing>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0dxfvsm">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="164" y="205" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1txmrrp_di" bpmnElement="Gateway_1txmrrp" isMarkerVisible="true">
+        <dc:Bounds x="595" y="155" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03m6yco_di" bpmnElement="Event_03m6yco">
+        <dc:Bounds x="762" y="62" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09fabb6_di" bpmnElement="Event_09fabb6">
+        <dc:Bounds x="762" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01n4oat_di" bpmnElement="Activity_1rekbvt">
+        <dc:Bounds x="270" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0g20182_di" bpmnElement="Activity_1oo7tea">
+        <dc:Bounds x="430" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1e466q2_di" bpmnElement="Flow_1e466q2">
+        <di:waypoint x="218" y="180" />
+        <di:waypoint x="270" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_198vycr_di" bpmnElement="Flow_198vycr">
+        <di:waypoint x="370" y="180" />
+        <di:waypoint x="430" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04fmxp6_di" bpmnElement="Flow_04fmxp6">
+        <di:waypoint x="530" y="180" />
+        <di:waypoint x="595" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15x43w3_di" bpmnElement="Flow_15x43w3">
+        <di:waypoint x="620" y="155" />
+        <di:waypoint x="620" y="80" />
+        <di:waypoint x="762" y="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="666" y="83" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ovce2l_di" bpmnElement="Flow_0ovce2l">
+        <di:waypoint x="645" y="180" />
+        <di:waypoint x="762" y="180" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="671" y="162" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ild109_di" bpmnElement="Flow_1ild109">
+        <di:waypoint x="620" y="205" />
+        <di:waypoint x="620" y="310" />
+        <di:waypoint x="320" y="310" />
+        <di:waypoint x="320" y="220" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="437" y="280" width="66" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

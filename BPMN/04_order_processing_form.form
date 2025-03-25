@@ -1,0 +1,88 @@
+{
+  "components": [
+    {
+      "text": "Shipping Confirmation",
+      "type": "text",
+      "layout": {
+        "row": "Row_0xdxif5",
+        "columns": null
+      },
+      "id": "Field_1q0eq4m"
+    },
+    {
+      "label": "Product Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0bq5isn",
+        "columns": null
+      },
+      "id": "Field_14q7kww",
+      "key": "title",
+      "readonly": true
+    },
+    {
+      "label": "Order Quantity",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ljdzib",
+        "columns": null
+      },
+      "id": "Field_1b35akn",
+      "key": "quantity",
+      "defaultValue": 0,
+      "readonly": true
+    },
+    {
+      "label": "Available Stock",
+      "type": "number",
+      "layout": {
+        "row": "Row_1xxhlws",
+        "columns": null
+      },
+      "id": "Field_1wzbfwj",
+      "key": "stock",
+      "readonly": true
+    },
+    {
+      "label": "Unit Price",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0g6bvr2",
+        "columns": null
+      },
+      "id": "Field_0137fvb",
+      "key": "price",
+      "readonly": true
+    },
+    {
+      "label": "Total Cost",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1tscanw",
+        "columns": null
+      },
+      "id": "Field_0qcwzcy",
+      "key": "total",
+      "readonly": true
+    },
+    {
+      "label": "Confirm Order and Shipping",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0dr9x62",
+        "columns": null
+      },
+      "id": "Field_1gvl9zu",
+      "key": "confirmed"
+    }
+  ],
+  "type": "default",
+  "id": "myForm4",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}

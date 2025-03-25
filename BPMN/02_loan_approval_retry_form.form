@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Applicant Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1q9c21p",
+        "columns": null
+      },
+      "id": "Field_039on3a",
+      "key": "applicant_name",
+      "readonly": true
+    },
+    {
+      "label": "Loan amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_13qomfk",
+        "columns": null
+      },
+      "id": "Field_1lg464p",
+      "key": "loan_amount",
+      "readonly": true
+    },
+    {
+      "label": "Credit Score",
+      "type": "number",
+      "layout": {
+        "row": "Row_0ueku7d",
+        "columns": null
+      },
+      "id": "Field_1gbr7n1",
+      "key": "credit_score"
+    },
+    {
+      "label": "Approve Loan Application",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_02mbmr8",
+        "columns": null
+      },
+      "id": "Field_1qw4uih",
+      "key": "approved",
+      "description": "I hereby review and approve the Loan request from the applicant"
+    }
+  ],
+  "type": "default",
+  "id": "myForm2",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
