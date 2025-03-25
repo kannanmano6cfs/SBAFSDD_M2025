@@ -1,0 +1,102 @@
+{
+  "components": [
+    {
+      "text": "# Apply Leave",
+      "type": "text",
+      "layout": {
+        "row": "Row_0033sps",
+        "columns": 10
+      },
+      "id": "Field_143jnw8"
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_12sg04c",
+        "columns": null
+      },
+      "id": "Field_1aps7f7",
+      "key": "textfield_name",
+      "validate": {
+        "required": true,
+        "minLength": 1
+      }
+    },
+    {
+      "label": "Employee Type",
+      "values": [
+        {
+          "label": "Tech Team",
+          "value": "techTeam"
+        },
+        {
+          "label": "HR",
+          "value": "hr"
+        },
+        {
+          "label": "Admin",
+          "value": "admin"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0h55iii",
+        "columns": null
+      },
+      "id": "Field_0thqxz8",
+      "key": "select_empType",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Leave Type",
+      "values": [
+        {
+          "label": "Sick Leave",
+          "value": "sickLeave"
+        },
+        {
+          "label": "Casual Leave",
+          "value": "casualLeave"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0h55iii",
+        "columns": null
+      },
+      "id": "Field_0nx79c5",
+      "key": "select_leaveType",
+      "searchable": false,
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Number Of Days",
+      "type": "number",
+      "layout": {
+        "row": "Row_12uowno",
+        "columns": null
+      },
+      "id": "Field_1g5fv5w",
+      "key": "number_noOfDays",
+      "decimalDigits": 0,
+      "validate": {
+        "required": true,
+        "min": 1
+      }
+    }
+  ],
+  "type": "default",
+  "id": "myLeaveForm1",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.33.1"
+  },
+  "schemaVersion": 18
+}
