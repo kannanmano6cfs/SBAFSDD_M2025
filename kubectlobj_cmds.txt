@@ -1,0 +1,478 @@
+Microsoft Windows [Version 10.0.26100.3476]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\manok>d:
+
+D:\>cd DemoProjects
+
+D:\DemoProjects>cd ExCService
+
+D:\DemoProjects\ExCService>dir
+ Volume in drive D is Thiya
+ Volume Serial Number is 0459-6DEE
+
+ Directory of D:\DemoProjects\ExCService
+
+27-03-2025  11:14    <DIR>          .
+27-03-2025  10:34               234 pod.yaml
+27-03-2025  01:55             1,810 pom.xml
+27-03-2025  11:13               454 replicaset.yaml
+27-03-2025  01:01               222 service.yaml
+26-03-2025  13:54    <DIR>          src
+26-03-2025  13:59    <DIR>          target
+              11 File(s)         22,710 bytes
+               6 Dir(s)  105,556,725,760 bytes free
+
+D:\DemoProjects\ExCService>kubectl apply -f replicaset.yaml
+replicaset.apps/excservicers created
+
+D:\DemoProjects\ExCService>kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+excservicers-lr6nn   1/1     Running   0          8s
+excservicers-w6hxr   1/1     Running   0          8s
+
+D:\DemoProjects\ExCService>kubectl get replication-controllers
+error: the server doesn't have a resource type "replication-controllers"
+
+D:\DemoProjects\ExCService>kubectl api-resources
+NAME                              SHORTNAMES   APIVERSION                        NAMESPACED   KIND
+bindings                                       v1                                true         Binding
+componentstatuses                 cs           v1                                false        ComponentStatus
+configmaps                        cm           v1                                true         ConfigMap
+endpoints                         ep           v1                                true         Endpoints
+events                            ev           v1                                true         Event
+limitranges                       limits       v1                                true         LimitRange
+namespaces                        ns           v1                                false        Namespace
+nodes                             no           v1                                false        Node
+persistentvolumeclaims            pvc          v1                                true         PersistentVolumeClaim
+persistentvolumes                 pv           v1                                false        PersistentVolume
+pods                              po           v1                                true         Pod
+podtemplates                                   v1                                true         PodTemplate
+replicationcontrollers            rc           v1                                true         ReplicationController
+resourcequotas                    quota        v1                                true         ResourceQuota
+secrets                                        v1                                true         Secret
+serviceaccounts                   sa           v1                                true         ServiceAccount
+services                          svc          v1                                true         Service
+mutatingwebhookconfigurations                  admissionregistration.k8s.io/v1   false        MutatingWebhookConfiguration
+validatingwebhookconfigurations                admissionregistration.k8s.io/v1   false        ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds     apiextensions.k8s.io/v1           false        CustomResourceDefinition
+apiservices                                    apiregistration.k8s.io/v1         false        APIService
+controllerrevisions                            apps/v1                           true         ControllerRevision
+daemonsets                        ds           apps/v1                           true         DaemonSet
+deployments                       deploy       apps/v1                           true         Deployment
+replicasets                       rs           apps/v1                           true         ReplicaSet
+statefulsets                      sts          apps/v1                           true         StatefulSet
+selfsubjectreviews                             authentication.k8s.io/v1          false        SelfSubjectReview
+tokenreviews                                   authentication.k8s.io/v1          false        TokenReview
+localsubjectaccessreviews                      authorization.k8s.io/v1           true         LocalSubjectAccessReview
+selfsubjectaccessreviews                       authorization.k8s.io/v1           false        SelfSubjectAccessReview
+selfsubjectrulesreviews                        authorization.k8s.io/v1           false        SelfSubjectRulesReview
+subjectaccessreviews                           authorization.k8s.io/v1           false        SubjectAccessReview
+horizontalpodautoscalers          hpa          autoscaling/v2                    true         HorizontalPodAutoscaler
+cronjobs                          cj           batch/v1                          true         CronJob
+jobs                                           batch/v1                          true         Job
+certificatesigningrequests        csr          certificates.k8s.io/v1            false        CertificateSigningRequest
+leases                                         coordination.k8s.io/v1            true         Lease
+endpointslices                                 discovery.k8s.io/v1               true         EndpointSlice
+events                            ev           events.k8s.io/v1                  true         Event
+flowschemas                                    flowcontrol.apiserver.k8s.io/v1   false        FlowSchema
+prioritylevelconfigurations                    flowcontrol.apiserver.k8s.io/v1   false        PriorityLevelConfiguration
+ingressclasses                                 networking.k8s.io/v1              false        IngressClass
+ingresses                         ing          networking.k8s.io/v1              true         Ingress
+networkpolicies                   netpol       networking.k8s.io/v1              true         NetworkPolicy
+runtimeclasses                                 node.k8s.io/v1                    false        RuntimeClass
+poddisruptionbudgets              pdb          policy/v1                         true         PodDisruptionBudget
+clusterrolebindings                            rbac.authorization.k8s.io/v1      false        ClusterRoleBinding
+clusterroles                                   rbac.authorization.k8s.io/v1      false        ClusterRole
+rolebindings                                   rbac.authorization.k8s.io/v1      true         RoleBinding
+roles                                          rbac.authorization.k8s.io/v1      true         Role
+priorityclasses                   pc           scheduling.k8s.io/v1              false        PriorityClass
+csidrivers                                     storage.k8s.io/v1                 false        CSIDriver
+csinodes                                       storage.k8s.io/v1                 false        CSINode
+csistoragecapacities                           storage.k8s.io/v1                 true         CSIStorageCapacity
+storageclasses                    sc           storage.k8s.io/v1                 false        StorageClass
+volumeattachments                              storage.k8s.io/v1                 false        VolumeAttachment
+
+D:\DemoProjects\ExCService>kubectl get replicationcontrollers 
+No resources found in default namespace.
+
+D:\DemoProjects\ExCService>kubectl get replicationcontrollers --all-namespaces
+No resources found
+
+D:\DemoProjects\ExCService>kubect config use-context default
+'kubect' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\DemoProjects\ExCService>kubectl config use-context default
+error: no context exists with the name: "default"
+
+D:\DemoProjects\ExCService>kubectl config use-context dockerdesktop
+error: no context exists with the name: "dockerdesktop"
+
+D:\DemoProjects\ExCService>kubectl config use-context docker-desktop
+Switched to context "docker-desktop".
+
+D:\DemoProjects\ExCService>kubectl get replicationcontrollers --all-namespaces
+No resources found
+
+D:\DemoProjects\ExCService>kubectl get pods
+NAMEREADY   STATUS    RESTARTS   AGE
+excservicers-lr6nn   1/1     Running   0          3m46s
+excservicers-w6hxr   1/1     Running   0          3m46s
+
+D:\DemoProjects\ExCService>kubectl delete pod excservicers-lr6nn
+pod "excservicers-lr6nn" deleted
+
+D:\DemoProjects\ExCService>kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+excservicers-p9fxh   1/1     Running   0          6s
+excservicers-w6hxr   1/1     Running   0          4m12s
+
+D:\DemoProjects\ExCService>kubectl delete replicaset excservicers
+replicaset.apps "excservicers" deleted
+
+D:\DemoProjects\ExCService>kubectl get pods
+No resources found in default namespace.
+
+D:\DemoProjects\ExCService>kubectl apply -f deployment.yaml
+deployment.apps/excservicedp created
+
+D:\DemoProjects\ExCService>kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+excservicedp-d56d7977d-2w8vc   1/1     Running   0          8s
+D:\DemoProjects\ExCService>kubectl delete svc gowevbapp
+Error from server (NotFound): services "gowevbapp" not found
+
+D:\DemoProjects\ExCService>kubectl delete svc gowebapp
+service "gowebapp" deleted
+
+D:\DemoProjects\ExCService>kubectl delete svc gowebapp-mysql
+service "gowebapp-mysql" deleted
+
+D:\DemoProjects\ExCService>kubectl apply -f service.yaml
+service/svcexcservice created
+
+D:\DemoProjects\ExCService>kubectl get services             
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes      ClusterIP   10.96.0.1       <none>        443/TCP          2d20h
+svcexcservice   NodePort    10.104.21.232   <none>        8090:32434/TCP   5s
+
+D:\DemoProjects\ExCService>
+
+D:\DemoProjects\ExCService>
+
+D:\DemoProjects\ExCService>kubectl get ns
+NAME              STATUS   AGE
+default           Active   2d20h
+kube-node-lease   Active   2d20h
+kube-public       Active   2d20h
+kube-system       Active   2d20h
+ns01              Active   2d19h
+ns02              Active   96m
+
+D:\DemoProjects\ExCService>kubectl apply -f pod.yaml
+pod/excservicepo created
+
+D:\DemoProjects\ExCService>kubectl get pods         
+NAME                           READY   STATUS    RESTARTS   AGE
+excservicedp-d56d7977d-2w8vc   1/1     Running   0          28m
+excservicedp-d56d7977d-p2bqh   1/1     Running   0          28m
+excservicedp-d56d7977d-rdvz9   1/1     Running   0          28m
+
+D:\DemoProjects\ExCService>kubectl get pods -n ns01         
+NAME           READY   STATUS    RESTARTS   AGE
+excservicepo   1/1     Running   0          31s
+
+D:\DemoProjects\ExCService>kubectl get pods -all-namespaces
+error: unknown shorthand flag: 'a' in -all-namespaces
+See 'kubectl get --help' for usage.
+
+D:\DemoProjects\ExCService>kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY   STATUS    RESTARTS        AGE
+default       excservicedp-d56d7977d-2w8vc             1/1     Running   0               29m
+default       excservicedp-d56d7977d-p2bqh             1/1     Running   0               29m
+default       excservicedp-d56d7977d-rdvz9             1/1     Running   0               29m
+kube-system   coredns-76f75df574-77lnb                 1/1     Running   1 (43h ago)     2d20h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running   1 (43h ago)     2d20h
+kube-system   etcd-docker-desktop                      1/1     Running   1 (43h ago)     2d20h
+kube-system   kube-apiserver-docker-desktop            1/1     Running   1 (43h ago)     2d20h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running   1 (43h ago)     2d20h
+kube-system   kube-proxy-rz2hm                         1/1     Running   1 (43h ago)     2d20h
+kube-system   kube-scheduler-docker-desktop            1/1     Running   3 (3h20m ago)   2d20h
+kube-system   storage-provisioner                      1/1     Running   3 (34h ago)     2d20h
+kube-system   vpnkit-controller                        1/1     Running   1 (43h ago)     2d20h
+ns01          excservicepo                             1/1     Running   0               51s
+
+D:\DemoProjects\ExCService>kubectl get replicasets
+NAME                     DESIRED   CURRENT   READY   AGE
+excservicedp-d56d7977d   3         3         3       34m
+
+D:\DemoProjects\ExCService>kubectl get replicasets -o wide
+NAME                     DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES            SELECTOR
+excservicedp-d56d7977d   3         3         3       34m   excservice   greetservice:v1   app=excservice,pod-template-hash=d56d7977d,tier=frontend
+
+D:\DemoProjects\ExCService>kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY   STATUS    RESTARTS       AGE
+default       excservicedp-d56d7977d-2w8vc             1/1     Running   0              139m
+default       excservicedp-d56d7977d-p2bqh             1/1     Running   0              139m
+default       excservicedp-d56d7977d-rdvz9             1/1     Running   0              139m
+kube-system   coredns-76f75df574-77lnb                 1/1     Running   1 (45h ago)    2d22h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running   1 (45h ago)    2d22h
+kube-system   etcd-docker-desktop                      1/1     Running   1 (45h ago)    2d22h
+kube-system   kube-apiserver-docker-desktop            1/1     Running   1 (45h ago)    2d22h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running   1 (45h ago)    2d22h
+kube-system   kube-proxy-rz2hm                         1/1     Running   1 (45h ago)    2d22h
+kube-system   kube-scheduler-docker-desktop            1/1     Running   3 (5h9m ago)   2d22h
+kube-system   storage-provisioner                      1/1     Running   3 (36h ago)    2d22h
+kube-system   vpnkit-controller                        1/1     Running   1 (45h ago)    2d22h
+ns01          excservicepo                             1/1     Running   0              110m
+
+D:\DemoProjects\ExCService>kubectl apply -f https://github.com/antrea-
+error: unable to read URL "https://github.com/antrea-", server reported 404 Not Found, status code=404
+
+D:\DemoProjects\ExCService>kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v1.1.0/antrea.yml
+customresourcedefinition.apiextensions.k8s.io/antreaagentinfos.clusterinformation.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/antreaagentinfos.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/antreacontrollerinfos.clusterinformation.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/antreacontrollerinfos.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/clustergroups.core.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/clustergroups.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/clusternetworkpolicies.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/clusternetworkpolicies.security.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/egresses.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/externalentities.core.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/externalentities.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.security.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/tiers.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/tiers.security.antrea.tanzu.vmware.com created
+customresourcedefinition.apiextensions.k8s.io/traceflows.crd.antrea.io created
+customresourcedefinition.apiextensions.k8s.io/traceflows.ops.antrea.tanzu.vmware.com created
+serviceaccount/antctl created
+serviceaccount/antrea-agent created
+serviceaccount/antrea-controller created
+clusterrole.rbac.authorization.k8s.io/aggregate-antrea-clustergroups-edit created
+clusterrole.rbac.authorization.k8s.io/aggregate-antrea-clustergroups-view created
+clusterrole.rbac.authorization.k8s.io/aggregate-antrea-policies-edit created
+clusterrole.rbac.authorization.k8s.io/aggregate-antrea-policies-view created
+clusterrole.rbac.authorization.k8s.io/aggregate-traceflows-edit created
+clusterrole.rbac.authorization.k8s.io/aggregate-traceflows-view created
+clusterrole.rbac.authorization.k8s.io/antctl created
+clusterrole.rbac.authorization.k8s.io/antrea-agent created
+clusterrole.rbac.authorization.k8s.io/antrea-cluster-identity-reader created
+clusterrole.rbac.authorization.k8s.io/antrea-controller created
+clusterrolebinding.rbac.authorization.k8s.io/antctl created
+clusterrolebinding.rbac.authorization.k8s.io/antrea-agent created
+clusterrolebinding.rbac.authorization.k8s.io/antrea-controller created
+configmap/antrea-config-cbfh568k9m created
+service/antrea created
+deployment.apps/antrea-controller created
+apiservice.apiregistration.k8s.io/v1alpha1.stats.antrea.io created
+apiservice.apiregistration.k8s.io/v1alpha1.stats.antrea.tanzu.vmware.com created
+apiservice.apiregistration.k8s.io/v1beta1.controlplane.antrea.tanzu.vmware.com created
+apiservice.apiregistration.k8s.io/v1beta1.networking.antrea.tanzu.vmware.com created
+apiservice.apiregistration.k8s.io/v1beta1.system.antrea.io created
+apiservice.apiregistration.k8s.io/v1beta1.system.antrea.tanzu.vmware.com created
+apiservice.apiregistration.k8s.io/v1beta2.controlplane.antrea.io created
+apiservice.apiregistration.k8s.io/v1beta2.controlplane.antrea.tanzu.vmware.com created
+kube-system   antrea-agent-czlqg                       0/2     Init:0/1            0               8s
+kube-system   antrea-controller-5b878b8d9-4r9qg        0/1     ContainerCreating   0               9s
+kube-system   coredns-76f75df574-77lnb                 1/1     Running             1 (45h ago)     2d22h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running             1 (45h ago)     2d22h
+kube-system   etcd-docker-desktop                      1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-apiserver-docker-desktop            1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-proxy-rz2hm                         1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-scheduler-docker-desktop            1/1     Running             3 (5h11m ago)   2d22h
+kube-system   storage-provisioner                      1/1     Running             3 (36h ago)     2d22h
+kube-system   vpnkit-controller                        1/1     Running             1 (45h ago)     2d22h
+ns01          excservicepo                             1/1     Running             0               112m
+
+D:\DemoProjects\ExCService>kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY   STATUS              RESTARTS        AGE
+default       excservicedp-d56d7977d-2w8vc             1/1     Running             0               141m
+default       excservicedp-d56d7977d-p2bqh             1/1     Running             0               141m
+default       excservicedp-d56d7977d-rdvz9             1/1     Running             0               141m
+kube-system   antrea-agent-czlqg                       0/2     Init:0/1            0               20s
+kube-system   antrea-controller-5b878b8d9-4r9qg        0/1     ContainerCreating   0               21s
+kube-system   coredns-76f75df574-77lnb                 1/1     Running             1 (45h ago)     2d22h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running             1 (45h ago)     2d22h
+kube-system   etcd-docker-desktop                      1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-apiserver-docker-desktop            1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-proxy-rz2hm                         1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-scheduler-docker-desktop            1/1     Running             3 (5h11m ago)   2d22h
+kube-system   storage-provisioner                      1/1     Running             3 (36h ago)     2d22h
+kube-system   vpnkit-controller                        1/1     Running             1 (45h ago)     2d22h
+ns01          excservicepo                             1/1     Running             0               112m
+
+D:\DemoProjects\ExCService>kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY   STATUS              RESTARTS        AGE
+default       excservicedp-d56d7977d-2w8vc             1/1     Running             0               141m
+default       excservicedp-d56d7977d-p2bqh             1/1     Running             0               141m
+default       excservicedp-d56d7977d-rdvz9             1/1     Running             0               141m
+kube-system   antrea-agent-czlqg                       0/2     Init:0/1            0               34s
+kube-system   antrea-controller-5b878b8d9-4r9qg        0/1     ContainerCreating   0               35s
+kube-system   coredns-76f75df574-77lnb                 1/1     Running             1 (45h ago)     2d22h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running             1 (45h ago)     2d22h
+kube-system   etcd-docker-desktop                      1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-apiserver-docker-desktop            1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-proxy-rz2hm                         1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-scheduler-docker-desktop            1/1     Running             3 (5h11m ago)   2d22h
+kube-system   storage-provisioner                      1/1     Running             3 (36h ago)     2d22h
+kube-system   vpnkit-controller                1/1     Running             1 (45h ago)     2d22h
+ns01          excservicepo                             1/1     Running             0               112m
+
+D:\DemoProjects\ExCService>kubectl get pods --all-namespaces
+NAMESPACE     NAME                                     READY   STATUS              RESTARTS        AGE
+default       excservicedp-d56d7977d-2w8vc             1/1     Running             0               141m
+default       excservicedp-d56d7977d-p2bqh             1/1     Running             0               141m
+default       excservicedp-d56d7977d-rdvz9             1/1     Running             0               141m
+kube-system   antrea-agent-czlqg                       0/2     Init:0/1            0               36s
+kube-system   antrea-controller-5b878b8d9-4r9qg        0/1     ContainerCreating   0               37s
+kube-system   coredns-76f75df574-77lnb                 1/1     Running             1 (45h ago)     2d22h
+kube-system   coredns-76f75df574-qsvxq                 1/1     Running             1 (45h ago)     2d22h
+kube-system   etcd-docker-desktop      1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-apiserver-docker-desktop    1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-controller-manager-docker-desktop   1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-proxy-rz2hm         1/1     Running             1 (45h ago)     2d22h
+kube-system   kube-scheduler-docker-desktop            1/1     Running             3 (5h11m ago)   2d22h
+kube-system   storage-provisioner                      1/1     Running             3 (36h ago)     2d22h
+kube-system   vpnkit-controller                        1/1     Running             1 (45h ago)     2d22h
+ns01          excservicepo                             1/1     Running             0               112m
+
+D:\DemoProjects\ExCService>cd ..
+
+D:\DemoProjects>cd..
+
+D:\>cd gowebapp
+
+D:\gowebapp>cd gowebapp
+
+D:\gowebapp\gowebapp>dir
+ Volume in drive D is Thiya
+ Volume Serial Number is 0459-6DEE
+
+ Directory of D:\gowebapp\gowebapp
+
+08-09-2024  21:38    <DIR>          .
+08-09-2024  21:42    <DIR>          ..
+01-07-2021  00:22               574 canary-deployment.yaml
+01-07-2021  00:52               158 canary-service-test.sh
+01-07-2021  00:46               214 canary-service.yaml
+01-07-2021  00:40               160 canary-test.sh
+08-09-2024  21:38    <DIR>          code
+08-09-2024  21:38    <DIR>          config
+30-06-2021  02:35               740 Dockerfile
+01-07-2021  20:23               749 Dockerfile-v2
+30-06-2021  21:03               523 gowebapp-deployment-bad-image.yaml
+01-07-2021  21:38             1,275 gowebapp-deployment-dynamic.yaml
+01-07-2021  01:32               683 gowebapp-deployment-resources.yaml
+24-03-2025  22:18               491 gowebapp-deployment.yaml
+01-07-2021  18:35               425 gowebapp-ingress.yaml
+30-06-2021  22:36               518 gowebapp-new-deployment.yaml
+30-06-2021  21:29               201 gowebapp-service-bad.yaml
+01-07-2021  18:20               199 gowebapp-service-clusterip.yaml
+30-06-2021  02:37               197 gowebapp-service.yaml
+01-07-2021  18:50            18,292 ingress-controller.yaml
+01-07-2021  19:31                62 my-namespace.yaml
+              17 File(s)         25,461 bytes
+               4 Dir(s)  105,556,512,768 bytes free
+
+D:\gowebapp\gowebapp>cd .
+
+D:\gowebapp\gowebapp>cd ..  
+
+D:\gowebapp>cd gowebapp-mysql
+
+D:\gowebapp\gowebapp-mysql>kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+excservicedp-d56d7977d-2w8vc   1/1     Running   0          161m
+excservicedp-d56d7977d-p2bqh   1/1     Running   0          161m
+excservicedp-d56d7977d-rdvz9   1/1     Running   0          161m
+
+D:\gowebapp\gowebapp-mysql>kubectl apply -f gowebapp-mysql-deployment.yaml    
+deployment.apps/gowebapp-mysql created
+
+D:\gowebapp\gowebapp-mysql>kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+excservicedp-d56d7977d-2w8vc      1/1     Running   0          162m
+excservicedp-d56d7977d-p2bqh      1/1     Running   0          162m
+excservicedp-d56d7977d-rdvz9      1/1     Running   0          162m
+gowebapp-mysql-787776b6bd-tzq26   1/1     Running   0          4s
+
+D:\gowebapp\gowebapp-mysql>kubectl get pods,svc
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/excservicedp-d56d7977d-2w8vc      1/1     Running   0          162m
+pod/excservicedp-d56d7977d-p2bqh      1/1     Running   0          162m
+pod/excservicedp-d56d7977d-rdvz9      1/1     Running   0          162m
+pod/gowebapp-mysql-787776b6bd-tzq26   1/1     Running   0          18s
+
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes      ClusterIP   10.96.0.1       <none>        443/TCP          2d22h
+service/svcexcservice   NodePort    10.104.21.232   <none>        8090:32434/TCP   139m
+
+D:\gowebapp\gowebapp-mysql>kubectl apply -f gowebapp-mysql-service.yaml       
+service/gowebapp-mysql created
+
+D:\gowebapp\gowebapp-mysql>kubectl get pods,svc
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/excservicedp-d56d7977d-2w8vc      1/1     Running   0          163m
+pod/excservicedp-d56d7977d-p2bqh      1/1     Running   0          163m
+pod/excservicedp-d56d7977d-rdvz9      1/1     Running   0          163m
+pod/gowebapp-mysql-787776b6bd-tzq26   1/1     Running   0          57s
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/gowebapp-mysql   ClusterIP   10.105.247.210   <none>        3306/TCP         4s
+service/kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP          2d22h
+service/svcexcservice    NodePort    10.104.21.232    <none>        8090:32434/TCP   140m
+
+D:\gowebapp\gowebapp-mysql>cd ..
+
+D:\gowebapp>cd gowebapp
+
+D:\gowebapp\gowebapp>kubectl apply -f gowebapp-deployment.yaml
+deployment.apps/gowebapp created
+
+D:\gowebapp\gowebapp>kubectl apply -f gowebapp-service.yaml   
+service/gowebapp created
+
+D:\gowebapp\gowebapp>kubectl get pods,svc
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/excservicedp-d56d7977d-2w8vc      1/1     Running   0          164m
+pod/excservicedp-d56d7977d-p2bqh      1/1     Running   0          164m
+pod/excservicedp-d56d7977d-rdvz9      1/1     Running   0          164m
+pod/gowebapp-6dcd46896f-sb58t         1/1     Running   0          17s
+pod/gowebapp-6dcd46896f-wdsrf         1/1     Running   0          17s
+pod/gowebapp-mysql-787776b6bd-tzq26   1/1     Running   0          109s
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/gowebapp         NodePort    10.98.37.217     <none>        80:32688/TCP     5s
+service/gowebapp-mysql   ClusterIP   10.105.247.210   <none>        3306/TCP         56s
+service/kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP          2d22h
+service/svcexcservice    NodePort    10.104.21.232    <none>        8090:32434/TCP   141m
+
+D:\gowebapp\gowebapp>kubectl delete pod gowebapp-mysql-787776b6bd-tzq26
+pod "gowebapp-mysql-787776b6bd-tzq26" deleted
+
+D:\gowebapp\gowebapp>kubectl get pods,svc
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/excservicedp-d56d7977d-2w8vc      1/1     Running   0          168m
+pod/excservicedp-d56d7977d-p2bqh      1/1     Running   0          168m
+pod/excservicedp-d56d7977d-rdvz9      1/1     Running   0          168m
+pod/gowebapp-6dcd46896f-sb58t         1/1     Running   0          4m45s
+pod/gowebapp-6dcd46896f-wdsrf         1/1     Running   0          4m45s
+pod/gowebapp-mysql-787776b6bd-fx27b   1/1     Running   0          9s
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/gowebapp         NodePort    10.98.37.217     <none>        80:32688/TCP     4m33s
+service/gowebapp-mysql   ClusterIP   10.105.247.210   <none>        3306/TCP         5m24s
+service/kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP          2d22h
+service/svcexcservice    NodePort    10.104.21.232    <none>        8090:32434/TCP   145m
+
+D:\gowebapp\gowebapp>kubectl get storageclasses
+NAME                 PROVISIONER          RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+hostpath (default)   docker.io/hostpath   Delete          Immediate           false                  2d22h
+
+D:\gowebapp\gowebapp>
