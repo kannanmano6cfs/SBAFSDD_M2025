@@ -49,3 +49,11 @@ Docker CLI commands
 Working with sample Gowebapp application 
 Spring Boot Containerization
 ----
+-----Day 9 HoP-----
+Working with Kubernetes Objects
+Pods
+Replicasets
+Deployment
+Services
+and Kubectl CLI commands
+----
