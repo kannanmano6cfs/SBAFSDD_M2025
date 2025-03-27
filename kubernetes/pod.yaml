@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: excservicepo
+  namespace: ns01
+  labels:
+    app: excservice
+    tier: frontend
+spec:
+  containers:
+    - name: excservice
+      image: greetservice:v1      
+      ports:
+      - containerPort: 8090

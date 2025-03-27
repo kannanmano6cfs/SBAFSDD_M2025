@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: excservicedp
+  labels:
+    app: excservice
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: excservice
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: excservice
+        tier: frontend
+    spec:
+      containers:
+      - name: excservice
+        image: greetservice:v1      
+        ports:
+        - containerPort: 8090
